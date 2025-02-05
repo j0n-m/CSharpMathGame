@@ -1,10 +1,12 @@
 ﻿
 
+using CSharpMathGame.Models;
+
 namespace CSharpMathGame
 {
     internal class Helpers
     {
-        static List<string> games = new List<string>();
+        internal static List<Game> games = new();
         internal static void GetGames()
         {
             Console.Clear();
@@ -17,9 +19,9 @@ namespace CSharpMathGame
 
             Console.WriteLine("Here are the games you've recently played:\n");
             Console.WriteLine("---------------------");
-            foreach (string game in games)
+            foreach (Game game in games)
             {
-                Console.WriteLine(game);
+                Console.WriteLine($"{game.Date} - {game.GameType}: {game.Score} pts");
             }
             Console.WriteLine("---------------------");
             Console.WriteLine("\nPress enter to return to the menu.");
@@ -52,7 +54,9 @@ namespace CSharpMathGame
         }
         internal static void AddToGameHistory(string gameName, int score)
         {
-            games.Add($"{DateTime.Now} - {gameName}: Score={score}");
+            //games.Add(new Game { Date = DateTime.Now, GameType = gameName, Score = score });
+            games.Add(new Game { Date = DateTime.Now, GameType = gameName, Score = score });
+
         }
     }
 }
