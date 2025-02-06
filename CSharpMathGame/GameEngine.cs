@@ -1,4 +1,6 @@
 ﻿
+using CSharpMathGame.Models;
+
 namespace CSharpMathGame
 {
     internal class GameEngine
@@ -6,6 +8,7 @@ namespace CSharpMathGame
 
         internal void AdditionGame(string message)
         {
+            Console.Clear();
             Console.WriteLine(message);
 
             Random randNum = new Random();
@@ -21,16 +24,19 @@ namespace CSharpMathGame
 
                 Console.WriteLine($"{num1} + {num2}");
 
-                string? result = Console.ReadLine() ?? "0";
+                string? result = Console.ReadLine();
+
+                result = Helpers.ValidateNumberInput(result);
+
 
                 if (int.Parse(result) == num1 + num2)
                 {
-                    Console.WriteLine("Correct!");
+                    Console.WriteLine("Correct!\n");
                     score++;
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect.");
+                    Console.WriteLine("Incorrect.\n");
                 }
                 if (i == gameTries - 1)
                 {
@@ -38,7 +44,7 @@ namespace CSharpMathGame
                     Console.WriteLine("====================================\n");
                 }
             }
-            Helpers.AddToGameHistory("Addition", score);
+            Helpers.AddToGameHistory(GameType.Addition, score);
 
             Console.WriteLine("Press enter to return to the menu.");
             Console.ReadLine();
@@ -47,6 +53,7 @@ namespace CSharpMathGame
 
         internal void SubtractionGame(string message)
         {
+            Console.Clear();
             Console.WriteLine(message);
 
             Random randNum = new Random();
@@ -62,16 +69,17 @@ namespace CSharpMathGame
 
                 Console.WriteLine($"{num1} - {num2}");
 
-                string? result = Console.ReadLine() ?? "0";
+                string? result = Console.ReadLine();
+                result = Helpers.ValidateNumberInput(result);
 
                 if (int.Parse(result) == num1 - num2)
                 {
-                    Console.WriteLine("Correct!");
+                    Console.WriteLine("Correct!\n");
                     score++;
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect.");
+                    Console.WriteLine("Incorrect.\n");
                 }
                 if (i == gameTries - 1)
                 {
@@ -79,13 +87,14 @@ namespace CSharpMathGame
                     Console.WriteLine("====================================\n");
                 }
             }
-            Helpers.AddToGameHistory("Subtraction", score);
+            Helpers.AddToGameHistory(GameType.Subtraction, score);
             Console.WriteLine("Press enter to return to the menu.");
             Console.ReadLine();
 
         }
         internal void MultiplicationGame(string message)
         {
+            Console.Clear();
             Console.WriteLine(message);
 
             Random randNum = new Random();
@@ -101,16 +110,17 @@ namespace CSharpMathGame
 
                 Console.WriteLine($"{num1} * {num2}");
 
-                string? result = Console.ReadLine() ?? "0";
+                string? result = Console.ReadLine();
+                result = Helpers.ValidateNumberInput(result);
 
                 if (int.Parse(result) == num1 * num2)
                 {
-                    Console.WriteLine("Correct!");
+                    Console.WriteLine("Correct!\n");
                     score++;
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect.");
+                    Console.WriteLine("Incorrect.\n");
                 }
                 if (i == gameTries - 1)
                 {
@@ -118,7 +128,7 @@ namespace CSharpMathGame
                     Console.WriteLine("====================================\n");
                 }
             }
-            Helpers.AddToGameHistory("Multiplication", score);
+            Helpers.AddToGameHistory(GameType.Multiplication, score);
             Console.WriteLine("Press enter to return to the menu.");
             Console.ReadLine();
 
@@ -139,7 +149,8 @@ namespace CSharpMathGame
 
                 Console.WriteLine($"{num1} / {num2}");
 
-                string? result = Console.ReadLine() ?? "0";
+                string? result = Console.ReadLine();
+                result = Helpers.ValidateNumberInput(result);
 
                 if (int.Parse(result) == num1 / num2)
                 {
@@ -160,7 +171,7 @@ namespace CSharpMathGame
                     numbers = Helpers.GetDivisionNumbers();
                 }
             }
-            Helpers.AddToGameHistory("Division", score);
+            Helpers.AddToGameHistory(GameType.Division, score);
             Console.WriteLine("Press enter to return to the menu.");
             Console.ReadLine();
 

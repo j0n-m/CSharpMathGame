@@ -4,9 +4,16 @@
     {
         internal int Score { get; set; }
         internal DateTime Date { get; set; }
-        internal required string GameType { get; set; }
+        internal required GameType Type { get; set; }
 
 
+    }
+    internal enum GameType
+    {
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division
     }
 
 }
